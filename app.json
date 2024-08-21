@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "LocationApp",
-    "slug": "LocationApp",
+    "slug": "locationapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -25,7 +25,12 @@
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION",
         "FOREGROUND_SERVICE",
-        "ACCESS_BACKGROUND_LOCATION"
+        "ACCESS_BACKGROUND_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_LOCATION"
       ]
     },
     "web": {
@@ -35,15 +40,26 @@
     },
     "plugins": [
       "expo-router",
-      ["expo-location",
-      {
-        "isAndroidBackgroundLocationEnabled": true,
-        "isAndroindForegroundLocationEnabled": true
-      }],
+      [
+        "expo-location",
+        {
+          "isAndroidBackgroundLocationEnabled": true,
+          "isAndroindForegroundLocationEnabled": true
+        }
+      ],
       "expo-task-manager"
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "a858aece-fcc7-4376-aa13-69a0bc76a84b"
+      }
+    },
+    "owner": "thomazo"
   }
 }
