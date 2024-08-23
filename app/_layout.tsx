@@ -30,7 +30,7 @@ defineTask<geolocation>(GEOLOCALIZACION, async ({data, error}) => {
         mac: mac,
         ...data
       }
-      axios.post(SEND_LOCATION_ENDPOINT, data).catch( (err) => console.log(err) )
+      axios.post(SEND_LOCATION_ENDPOINT, body).catch( (err) => console.log(err) )
       console.log(`${new Date(data.locations[0].timestamp)}: \nLatitude:${lat}\nLongitude:${long}`)
       return
   }
