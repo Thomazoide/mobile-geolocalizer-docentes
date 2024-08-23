@@ -5,12 +5,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import UserLocation from '@/components/location';
 
-
-
 export default function HomeScreen() {
-
-  
-
   
   return (
     <ParallaxScrollView
@@ -25,12 +20,6 @@ export default function HomeScreen() {
         <ThemedText type="title">App de geolocalización</ThemedText>
       </ThemedView>
       <HelloWave/>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Datos de localización:</ThemedText>
-        <ThemedText>
-          ------------------------
-        </ThemedText>
-      </ThemedView>
       <ThemedView style={styles.stepContainer}>
         <UserLocation/>
       </ThemedView>

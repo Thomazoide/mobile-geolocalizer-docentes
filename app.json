@@ -4,11 +4,11 @@
     "slug": "locationapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/UA_minilogo.jpeg",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/UA_minilogo.jpeg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,7 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/UA_minilogo.jpeg",
         "backgroundColor": "#ffffff"
       },
       "package": "com.anonymous.LocationApp",
@@ -30,7 +30,8 @@
         "android.permission.ACCESS_FINE_LOCATION",
         "android.permission.ACCESS_BACKGROUND_LOCATION",
         "android.permission.FOREGROUND_SERVICE",
-        "android.permission.FOREGROUND_SERVICE_LOCATION"
+        "android.permission.FOREGROUND_SERVICE_LOCATION",
+        "android.permission.INTERNET"
       ]
     },
     "web": {
@@ -47,7 +48,14 @@
           "isAndroindForegroundLocationEnabled": true
         }
       ],
-      "expo-task-manager"
+      "expo-task-manager",
+      [
+        "expo-build-properties", {
+          "android": {
+            "usesCleartextTrafic": true
+          }
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

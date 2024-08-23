@@ -4,12 +4,13 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { defineTask } from 'expo-task-manager';
 import axios from 'axios';
 import { GEOLOCALIZACION } from '@/constants/taskNames';
 import { geolocation } from '@/types/geoTypes';
+import { SEND_LOCATION_ENDPOINT } from '@/constants/endpoints';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -20,11 +21,16 @@ defineTask<geolocation>(GEOLOCALIZACION, async ({data, error}) => {
       return
   }
   console.log(JSON.stringify(data))
-  if(data){
+  const mac: string | null = await AsyncStorage.getItem('mac')
+  if(data && mac){
       const { locations } = data
       let lat = locations[0].coords.latitude
       let long = locations[0].coords.longitude
-      axios.post("http://52.201.181.178:3000/api/receptor/location", data).catch( (err) => console.log(err) )
+      const body: any = {
+        mac: mac,
+        ...data
+      }
+      axios.post(SEND_LOCATION_ENDPOINT, data).catch( (err) => console.log(err) )
       console.log(`${new Date(data.locations[0].timestamp)}: \nLatitude:${lat}\nLongitude:${long}`)
       return
   }
@@ -48,10 +54,10 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
+        <Stack>
+          <Stack.Screen name="index" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
     </ThemeProvider>
   );
 }
