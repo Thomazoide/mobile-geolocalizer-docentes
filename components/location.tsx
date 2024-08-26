@@ -37,9 +37,9 @@ export default function UserLocation() {
 
     const options: Location.LocationTaskOptions = {
         accuracy: Location.Accuracy.Balanced,
-        timeInterval: 10000,
+        timeInterval: 5000,
         distanceInterval: 0,
-        deferredUpdatesInterval: 10000
+        deferredUpdatesInterval: 5000
     }
 
     const startLocationAlt = () => {

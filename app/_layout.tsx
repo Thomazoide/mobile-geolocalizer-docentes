@@ -27,7 +27,7 @@ defineTask<geolocation>(GEOLOCALIZACION, async ({data, error}) => {
       let lat = locations[0].coords.latitude
       let long = locations[0].coords.longitude
       const body: any = {
-        mac: mac,
+        mac: mac.toUpperCase(),
         ...data
       }
       axios.post(SEND_LOCATION_ENDPOINT, body).catch( (err) => console.log(err) )
