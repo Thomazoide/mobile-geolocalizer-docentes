@@ -8,6 +8,7 @@ import { GEOLOCALIZACION } from "@/constants/taskNames";
 import axios from "axios";
 import { CHECK_BEACON_MAC_ENDPOINT } from "@/constants/endpoints";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import React from "react";
 
 const styles = StyleSheet.create({
     textInput: {
